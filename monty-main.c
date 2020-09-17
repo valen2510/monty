@@ -22,11 +22,11 @@ int main(int argc, char **argv)
 
 	global->argv = argv;
 	if (argc != 2)
-		exit(error_msg(0));
+		return (error_msg(0));
 
 	global->fp = fopen(argv[1], "r");
 	if (!global->fp)
-		exit(error_msg(1));
+		return (error_msg(1));
 
 	global->arr = malloc(sizeof(char *) * 100);
 	if (!global->arr)
