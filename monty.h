@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -35,9 +36,9 @@ typedef struct instruction_s
 } instruction_t;
 /**
  * struct var_global - global variables for monty interpreter
- * @array: array for command arguments
+ * @arr: array for command arguments
  * @argv: arguments from the prompt
- * @line_num: number of the line that is being processed
+ * @ln: number of the line that is being processed
  * @command: command entered in array[0]
  * @fp: poniter to object in stream
  * @stack: pointer to stack
@@ -47,9 +48,9 @@ typedef struct instruction_s
  */
 typedef struct var_global
 {
-	char **array;
+	char **arr;
 	char **argv;
-	unsigned int line_num;
+	unsigned int ln;
 	char *command;
 	FILE *fp;
 	stack_t *stack;
@@ -64,6 +65,7 @@ void swap(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void (*op_func(stack_t **stack))(stack_t **stack, unsigned int line_number);
 char **splitline(char *line);
+int _atoi(char *s);
 int error_msg(int error);
 void free_all(void);
 void free_stack(stack_t *stack);
