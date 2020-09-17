@@ -20,8 +20,11 @@ void (*op_func(stack_t **stack))(stack_t **stack, unsigned int line_number)
 	global->stack = *stack;
 	for (i = 0; op_func[i].opcode != NULL; i++)
 	{
-		if ((strcmp(global->arr[0], op_func[i].opcode)) == 0)
+		if (global->arr[0] != NULL)
+		{
+			if ((strcmp(global->arr[0], op_func[i].opcode)) == 0)
 			return (op_func[i].f);
+		}
 	}
 	exit(error_msg(3));
 }
