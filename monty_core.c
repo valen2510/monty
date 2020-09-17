@@ -20,7 +20,7 @@ void (*op_func(stack_t **stack))(stack_t **stack, unsigned int line_number)
 	global->stack = *stack;
 	for (i = 0; op_func[i].opcode != NULL; i++)
 	{
-		if ((strcmp(global->array[0], op_func[i].opcode)) == 0)
+		if ((strcmp(global->arr[0], op_func[i].opcode)) == 0)
 			return (op_func[i].f);
 	}
 	exit(error_msg(3));
@@ -38,10 +38,37 @@ char **splitline(char *line)
 	word = strtok(line, " \n\t");
 	while (word != NULL)
 	{
-		global->array[position] = word;
+		global->arr[position] = word;
 		word = strtok(NULL, " \n\t");
 		position++;
 	}
-	global->array[position] = NULL;
-	return (global->array);
+	global->arr[position] = NULL;
+	return (global->arr);
+}
+/**
+ * _atoi - convert sring into integer
+ * @s: pointer
+ * Return: integer
+ */
+int _atoi(char *s)
+{
+	int sign = 0;
+	unsigned int r = 0;
+
+	while (*s != '\0')
+	{
+		if (*s == '-')
+			sign++;
+
+		else if (*s >= '0' && *s <= '9')
+			r = r * 10 + (*s - '0');
+
+		else if (r > 0)
+			break;
+		s++;
+	}
+	if (sign % 2 != 0)
+		return (r * -1);
+
+	return (r);
 }

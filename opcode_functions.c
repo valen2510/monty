@@ -8,17 +8,17 @@ void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_element = NULL;
 
-	global->line_num = line_number;
+	global->ln = line_number;
 	global->stack = *stack;
 
-	if (global->array[1] == NULL)
+	if (global->arr[1] == NULL || _atoi(global->arr[1]) == 0)
 		exit(error_msg(4));
 
 	new_element = malloc(sizeof(stack_t));
 	if (!new_element)
 		exit(error_msg(2));
 
-	new_element->n = atoi(global->array[1]);
+	new_element->n = _atoi(global->arr[1]);
 
 	if (!(*stack))
 	{
@@ -57,7 +57,7 @@ void pall(stack_t **stack, unsigned int line_number)
  */
 void pint(stack_t **stack, unsigned int line_number)
 {
-	global->line_num = line_number;
+	global->ln = line_number;
 	global->stack = *stack;
 
 	if ((*stack) == NULL)
@@ -92,7 +92,7 @@ void swap(stack_t **stack, unsigned int line_number)
 {
 	int num;
 
-	global->line_num = line_number;
+	global->ln = line_number;
 	global->stack = *stack;
 
 	if (!(*stack) || !((*stack)->next))
