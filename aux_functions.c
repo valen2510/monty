@@ -70,6 +70,7 @@ void initialize(global_t *global, char **argv)
 {
 	global->arr = NULL;
 	global->command = NULL;
+	global->ln = 0;
 	global->fp = NULL;
 	global->stack = NULL;
 	global->argv = argv;

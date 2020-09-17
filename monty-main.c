@@ -8,7 +8,6 @@
 int main(int argc, char **argv)
 {
 	size_t line_size = 0;
-	unsigned int line_number = 1;
 
 	global = malloc(sizeof(global_t));
 	if (global == NULL)
@@ -27,11 +26,11 @@ int main(int argc, char **argv)
 		return (error_msg(2));
 	while (getline(&global->command, &line_size, global->fp) != -1)
 	{
-		global->ln = line_number++;
+		global->ln++;
 		splitline(global->command);
 		if (global->arr[0] == NULL)
 			continue;
-		op_func()(&global->stack, line_number);
+		op_func()(&global->stack, global->ln);
 		free(global->command);
 		global->command = NULL;
 		line_size = 0;
