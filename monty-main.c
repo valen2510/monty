@@ -28,7 +28,7 @@ int main(int argc, char **argv)
 	if (!global->fp)
 		exit(error_msg(1));
 
-	global->arr = malloc(sizeof(char *) * 10);
+	global->arr = malloc(sizeof(char *) * 100);
 	if (!global->arr)
 		return (error_msg(2));
 
@@ -46,5 +46,5 @@ int main(int argc, char **argv)
 	}
 	global->command = line;
 	free_all();
-	exit(EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }
