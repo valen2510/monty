@@ -50,12 +50,14 @@ void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *aux_stack = *stack;
 
+	global->ln = line_number;
+
 	while (aux_stack != NULL)
 	{
 		printf("%d\n", aux_stack->n);
 		aux_stack = aux_stack->next;
 	}
-	(void)line_number;
+
 }
 /**
  * pint - get the value of the top of the stack
@@ -80,6 +82,8 @@ void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *top_element;
 
+	global->ln = line_number;
+
 	if (!(*stack))
 		exit(error_msg(6));
 
@@ -88,7 +92,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	if (*stack)
 		(*stack)->prev = NULL;
 	free(top_element);
-	(void)line_number;
+
 }
 /**
  * swap - interchange the values of the first two elements in a stack
