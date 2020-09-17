@@ -8,7 +8,7 @@
 int main(int argc, char **argv)
 {
 	size_t line_size = 0;
-	unsigned int line_number = 0;
+	unsigned int line_number = 1;
 
 	global = malloc(sizeof(global_t));
 	if (global == NULL)
