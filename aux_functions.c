@@ -7,21 +7,21 @@
 int error_msg(int error)
 {
 	if (error == 0)
-		printf("USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 	else if (error == 1)
-		printf("Error: Can't open file %s\n", global->argv[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", global->argv[1]);
 	else if (error == 2)
-		perror("Error: malloc failed");
+		fprintf(stderr, "Error: malloc failed");
 	else if (error == 3)
-		printf("L%u: unknown instruction %s\n", global->line_num, global->array[0]);
+		fprintf(stderr, "L%u: unknown instruction %s\n", global->line_num, global->array[0]);
 	else if (error == 4)
-		printf("L%u: usage: push integer\n", global->line_num);
+		fprintf(stderr, "L%u: usage: push integer\n", global->line_num);
 	else if (error == 5)
-		printf("L%u: can't pint, stack empty\n", global->line_num);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", global->line_num);
 	else if (error == 6)
-		printf("L%u: can't pop an empty stack\n", global->line_num);
+		fprintf(stderr, "L%u: can't pop an empty stack\n", global->line_num);
 	else if (error == 7)
-		printf("L%u: can't swap, stack too short\n", global->line_num);
+		fprintf(stderr, "L%u: can't swap, stack too short\n", global->line_num);
 
 	free_all();
 	exit(EXIT_FAILURE);
