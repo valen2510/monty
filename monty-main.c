@@ -9,7 +9,7 @@ int main(int argc, char **argv)
 {
 	char *line = NULL;
 	size_t line_size = 0;
-	unsigned int line_number = 1;
+	unsigned int line_number = 0;
 	stack_t *head = NULL;
 
 	global = malloc(sizeof(global_t));
@@ -34,12 +34,17 @@ int main(int argc, char **argv)
 
 	while (getline(&line, &line_size, global->fp) != -1)
 	{
+		line_number++;
 		splitline(line);
+		if (global->arr[0] == NULL)
+			continue;
 		global->command = line;
 		global->ln = line_number;
 		op_func(&head)(&head, line_number);
-		line_number++;
+		free(line);
+		line = NULL;
 	}
+	global->command = line;
 	free_all();
 	exit(EXIT_SUCCESS);
 }
