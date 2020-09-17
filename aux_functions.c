@@ -22,6 +22,8 @@ int error_msg(int error)
 		fprintf(stderr, "L%u: can't pop an empty stack\n", global->ln);
 	else if (error == 7)
 		fprintf(stderr, "L%u: can't swap, stack too short\n", global->ln);
+	else if (error == 8)
+		fprintf(stderr, "L%u: can't add, stack too short\n", global->ln);
 
 	free_all();
 	exit(EXIT_FAILURE);

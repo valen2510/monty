@@ -1,10 +1,9 @@
 #include "monty.h"
 /**
  ** op_func - get the operation at the given commands
- * @stack: hed of the stack
  * Return: Operation perfoming or message error
  */
-void (*op_func(stack_t **stack))(stack_t **stack, unsigned int line_number)
+void (*op_func(void))(stack_t **stack, unsigned int line_number)
 {
 	int i;
 
@@ -14,10 +13,11 @@ void (*op_func(stack_t **stack))(stack_t **stack, unsigned int line_number)
 		{"pint", pint},
 		{"pop", pop},
 		{"swap", swap},
+		{"add", add},
 		{"nop", nop},
 		{NULL, NULL}
 	};
-	global->stack = *stack;
+
 	for (i = 0; op_func[i].opcode != NULL; i++)
 	{
 		if (global->arr[0] != NULL)
