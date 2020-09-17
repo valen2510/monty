@@ -7,7 +7,6 @@
  */
 int main(int argc, char **argv)
 {
-	char *line = NULL;
 	size_t line_size = 0;
 	unsigned int line_number = 0;
 	stack_t *head = NULL;
@@ -31,20 +30,19 @@ int main(int argc, char **argv)
 	global->arr = malloc(sizeof(char *) * 100);
 	if (!global->arr)
 		return (error_msg(2));
-	while (getline(&line, &line_size, global->fp) != -1)
+	while (getline(&global->command, &line_size, global->fp) != -1)
 	{
 		line_number++;
-		splitline(line);
+		splitline(global->command);
 		if (global->arr[0] == NULL)
 			continue;
-		global->command = line;
 		global->ln = line_number;
-		op_func(&head)(&head, line_number);
-		free(line);
-		line = NULL;
+		op_func()(&head, line_number);
+		global->stack = head;
+		free(global->command);
+		global->command = NULL;
 		line_size = 0;
 	}
-	global->command = line;
 	free_all();
 	return (EXIT_SUCCESS);
 }

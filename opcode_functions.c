@@ -22,7 +22,7 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 
 	new_element = malloc(sizeof(stack_t));
-	if (!new_element)
+	if (new_element == NULL)
 		exit(error_msg(2));
 
 	new_element->n = atoi(global->arr[1]);
