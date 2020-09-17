@@ -19,8 +19,8 @@ int main(int argc, char **argv)
 	global->command = NULL;
 	global->fp = NULL;
 	global->stack = NULL;
-
 	global->argv = argv;
+
 	if (argc != 2)
 		return (error_msg(0));
 
@@ -31,7 +31,6 @@ int main(int argc, char **argv)
 	global->arr = malloc(sizeof(char *) * 100);
 	if (!global->arr)
 		return (error_msg(2));
-
 	while (getline(&line, &line_size, global->fp) != -1)
 	{
 		line_number++;
@@ -43,6 +42,7 @@ int main(int argc, char **argv)
 		op_func(&head)(&head, line_number);
 		free(line);
 		line = NULL;
+		line_size = 0;
 	}
 	global->command = line;
 	free_all();
