@@ -9,16 +9,11 @@ int main(int argc, char **argv)
 {
 	size_t line_size = 0;
 	unsigned int line_number = 0;
-	stack_t *head = NULL;
 
 	global = malloc(sizeof(global_t));
-	if (!global)
+	if (global == NULL)
 		return (error_msg(2));
-	global->arr = NULL;
-	global->command = NULL;
-	global->fp = NULL;
-	global->stack = NULL;
-	global->argv = argv;
+	initialize(global, argv);
 
 	if (argc != 2)
 		return (error_msg(0));
@@ -32,13 +27,11 @@ int main(int argc, char **argv)
 		return (error_msg(2));
 	while (getline(&global->command, &line_size, global->fp) != -1)
 	{
-		line_number++;
+		global->ln = line_number++;
 		splitline(global->command);
 		if (global->arr[0] == NULL)
 			continue;
-		global->ln = line_number;
-		op_func()(&head, line_number);
-		global->stack = head;
+		op_func()(&global->stack, line_number);
 		free(global->command);
 		global->command = NULL;
 		line_size = 0;

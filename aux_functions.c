@@ -33,16 +33,18 @@ int error_msg(int error)
  */
 void free_all(void)
 {
-	if (global->stack != NULL)
-		free_stack(global->stack);
-	if (global->command != NULL)
-		free(global->command);
-	if (global->arr != NULL)
-		free(global->arr);
-	if (global->fp != NULL)
-		fclose(global->fp);
-
-	free(global);
+	if (global)
+	{
+		if (global->stack != NULL)
+			free_stack(global->stack);
+		if (global->command != NULL)
+			free(global->command);
+		if (global->arr != NULL)
+			free(global->arr);
+		if (global->fp != NULL)
+			fclose(global->fp);
+		free(global);
+	}
 }
 /**
  * free_stack - free the elements of a stack
@@ -58,4 +60,17 @@ void free_stack(stack_t *stack)
 		stack = stack->next;
 		free(current_node);
 	}
+}
+/**
+ * initialize - initialize the elelemnts in a structure global_t
+ * @global: structure
+ * @argv: elements in the command line
+ */
+void initialize(global_t *global, char **argv)
+{
+	global->arr = NULL;
+	global->command = NULL;
+	global->fp = NULL;
+	global->stack = NULL;
+	global->argv = argv;
 }

@@ -64,6 +64,7 @@ void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
+void initialize(global_t *global, char **argv);
 void (*op_func(void))(stack_t **stack, unsigned int line_number);
 char **splitline(char *line);
 int _atoi(char *s);
