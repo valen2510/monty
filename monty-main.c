@@ -15,6 +15,10 @@ int main(int argc, char **argv)
 	global = malloc(sizeof(global_t));
 	if (!global)
 		return (error_msg(2));
+	global->arr = NULL;
+	global->command = NULL;
+	global->fp = NULL;
+	global->stack = NULL;
 
 	global->argv = argv;
 	if (argc != 2)
@@ -24,15 +28,15 @@ int main(int argc, char **argv)
 	if (!global->fp)
 		exit(error_msg(1));
 
-	global->array = malloc(sizeof(char *) * 10);
-	if (!global->array)
+	global->arr = malloc(sizeof(char *) * 10);
+	if (!global->arr)
 		return (error_msg(2));
 
 	while (getline(&line, &line_size, global->fp) != -1)
 	{
 		splitline(line);
 		global->command = line;
-		global->line_num = line_number;
+		global->ln = line_number;
 		op_func(&head)(&head, line_number);
 		line_number++;
 	}
