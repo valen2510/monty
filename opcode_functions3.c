@@ -28,7 +28,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 	if (!(*stack))
 		exit(error_msg(5));
 
-	if ((*stack)->n < 0  || (*stack)->n > 128)
+	if ((*stack)->n < 0  || (*stack)->n > 127)
 		exit(error_msg(9));
 
 	printf("%c\n", (char)(*stack)->n);
@@ -40,7 +40,7 @@ void pchar(stack_t **stack, unsigned int line_number)
  */
 void rotl(stack_t **stack, unsigned int line_number)
 {
-	stack_t *aux_head, *tail = *stack;
+	stack_t *tail = *stack;
 	(void)line_number;
 
 	if (*stack == NULL || (*stack)->next == NULL)
@@ -48,12 +48,11 @@ void rotl(stack_t **stack, unsigned int line_number)
 
 	while (tail->next)
 		tail = tail->next;
-	aux_head = (*stack)->next;
-	(*stack)->next = tail->next;
-	(*stack)->prev = tail;
 	tail->next = *stack;
-	aux_head->prev = NULL;
-	*stack = aux_head;
+	tail->next->prev = tail;
+	*stack = (*stack)->next;
+	tail->next->next = NULL;
+	(*stack)->prev = NULL;
 }
 /**
  ** rotr - reverse the elements in a stack
