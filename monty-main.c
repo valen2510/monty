@@ -28,7 +28,7 @@ int main(int argc, char **argv)
 	{
 		global->ln++;
 		splitline(global->command);
-		if (global->arr[0] == NULL)
+		if (global->arr[0] == NULL || global->arr[0][0] == '#')
 			continue;
 		op_func()(&global->stack, global->ln);
 		free(global->command);
