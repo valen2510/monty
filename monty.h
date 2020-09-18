@@ -40,6 +40,7 @@ typedef struct instruction_s
  * @argv: arguments from the prompt
  * @ln: number of the line that is being processed
  * @command: command entered in array[0]
+ * @op: opcode from the instructions structure
  * @fp: poniter to object in stream
  * @stack: pointer to stack
  *
@@ -51,6 +52,7 @@ typedef struct var_global
 	char **arr;
 	char **argv;
 	unsigned int ln;
+	char *op;
 	char *command;
 	FILE *fp;
 	stack_t *stack;
@@ -64,6 +66,11 @@ void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
+void sub(stack_t **stack, unsigned int line_number);
+void _div(stack_t **stack, unsigned int line_number);
+void mul(stack_t **stack, unsigned int line_number);
+void mod(stack_t **stack, unsigned int line_number);
+
 void initialize(global_t *global, char **argv);
 void (*op_func(void))(stack_t **stack, unsigned int line_number);
 char **splitline(char *line);

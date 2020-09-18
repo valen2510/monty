@@ -21,9 +21,9 @@ int error_msg(int error)
 	else if (error == 6)
 		fprintf(stderr, "L%u: can't pop an empty stack\n", global->ln);
 	else if (error == 7)
-		fprintf(stderr, "L%u: can't swap, stack too short\n", global->ln);
+		fprintf(stderr, "L%u: can't %s, stack too short\n", global->ln, global->op);
 	else if (error == 8)
-		fprintf(stderr, "L%u: can't add, stack too short\n", global->ln);
+		fprintf(stderr, "L%u: division by zero\n", global->ln);
 
 	free_all();
 	exit(EXIT_FAILURE);
@@ -70,6 +70,7 @@ void initialize(global_t *global, char **argv)
 {
 	global->arr = NULL;
 	global->command = NULL;
+	global->op = NULL;
 	global->ln = 0;
 	global->fp = NULL;
 	global->stack = NULL;
