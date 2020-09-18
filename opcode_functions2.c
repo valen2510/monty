@@ -72,7 +72,7 @@ void mul(stack_t **stack, unsigned int line_number)
 	int result;
 	(void)line_number;
 	if (!(*stack) || !(*stack)->next)
-		exit(error_msg(7));
+		exit(error_msg(9));
 
 	result = (*stack)->n * (*stack)->next->n;
 	(*stack)->next->n = result;
