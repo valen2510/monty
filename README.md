@@ -44,7 +44,8 @@ $
 pall This is the end of our program. Monty is awesome!$
 monty]\-->
 
-```</p>
+```
+</p>
 
 <h3> ⭐️ Compilation</h3>
 
@@ -57,6 +58,7 @@ $ gcc -Wall -Werror -Wextra -pedantic *.c -o monty
 
 ```
 $ ./monty bytecode_file
+
 ```
 
 <h3> ✨ Project Opcode functions</h3>
