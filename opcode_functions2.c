@@ -33,13 +33,11 @@ void add(stack_t **stack, unsigned int line_number)
  */
 void sub(stack_t **stack, unsigned int line_number)
 {
-	int result;
 	(void)line_number;
 	if (!(*stack) || !(*stack)->next)
 		exit(error_msg(7));
 
-	result = (*stack)->n - (*stack)->next->n;
-	(*stack)->next->n = result;
+	(*stack)->next->n -= (*stack)->n;
 	pop(stack, line_number);
 
 }
@@ -50,15 +48,13 @@ void sub(stack_t **stack, unsigned int line_number)
  */
 void _div(stack_t **stack, unsigned int line_number)
 {
-	int result;
 	(void)line_number;
 	if (!(*stack) || !(*stack)->next)
 		exit(error_msg(7));
 	if ((*stack)->n == 0)
 		exit(error_msg(8));
 
-	result = (*stack)->n / (*stack)->next->n;
-	(*stack)->next->n = result;
+	(*stack)->next->n /= (*stack)->n;
 	pop(stack, line_number);
 
 }
@@ -69,16 +65,11 @@ void _div(stack_t **stack, unsigned int line_number)
  */
 void mul(stack_t **stack, unsigned int line_number)
 {
-	stack_t *current_node;
-
 	(void)line_number;
 	if (!(*stack) || !(*stack)->next)
 		exit(error_msg(7));
 
-	current_node = *stack;
 	(*stack)->next->n *= (*stack)->n;
-	(*stack)->next->prev = NULL;
-	*stack = (*stack)->next;
-	free(current_node);
+	pop(stack, line_number);
 
 }
