@@ -23,7 +23,7 @@ void mod(stack_t **stack, unsigned int line_number)
  */
 void pchar(stack_t **stack, unsigned int line_number)
 {
-	global->ln = line_number;
+	(void)line_number;
 
 	if (!(*stack))
 		exit(error_msg(5));
@@ -41,8 +41,11 @@ void pchar(stack_t **stack, unsigned int line_number)
 void rotl(stack_t **stack, unsigned int line_number)
 {
 	stack_t *aux_head, *tail = *stack;
+	(void)line_number;
 
-	global->ln = line_number;
+	if (*stack == NULL || (*stack)->next == NULL)
+		return;
+
 	while (tail->next)
 		tail = tail->next;
 	aux_head = (*stack)->next;
@@ -60,8 +63,10 @@ void rotl(stack_t **stack, unsigned int line_number)
 void rotr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current_node, *next_node;
+	(void)line_number;
 
-	global->ln = line_number;
+	if (*stack == NULL || (*stack)->next == NULL)
+		return;
 
 	current_node = NULL;
 	while (*stack)
