@@ -7,19 +7,21 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_element = NULL;
-	int i;
+	int i = 0;
 
 	global->ln = line_number;
 	global->stack = *stack;
 
 	if (global->arr[1] == NULL)
 		exit(error_msg(4));
-
-	for (i = 0; global->arr[1][i] != '\0'; i++)
+	if (global->arr[1][0] == '-' && (isdigit(global->arr[1][i + 1]) == 0))
+		exit(error_msg(4));
+	for (; global->arr[1][i] != '\0'; i++)
 	{
-		if ((isdigit(global->arr[1][i])) == 0 && global->arr[1][i] != '-')
+		if (global->arr[1][i + 1] && (isdigit(global->arr[1][i + 1]) == 0))
 			exit(error_msg(4));
 	}
+
 
 	new_element = malloc(sizeof(stack_t));
 	if (new_element == NULL)

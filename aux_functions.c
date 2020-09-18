@@ -17,13 +17,15 @@ int error_msg(int error)
 	else if (error == 4)
 		fprintf(stderr, "L%u: usage: push integer\n", global->ln);
 	else if (error == 5)
-		fprintf(stderr, "L%u: can't pint, stack empty\n", global->ln);
+		fprintf(stderr, "L%u: can't %s, stack empty\n", global->ln, global->op);
 	else if (error == 6)
 		fprintf(stderr, "L%u: can't pop an empty stack\n", global->ln);
 	else if (error == 7)
 		fprintf(stderr, "L%u: can't %s, stack too short\n", global->ln, global->op);
 	else if (error == 8)
 		fprintf(stderr, "L%u: division by zero\n", global->ln);
+	else if (error == 9)
+		fprintf(stderr, "L%u: can't pchar, value out of range\n", global->ln);
 
 	free_all();
 	exit(EXIT_FAILURE);
