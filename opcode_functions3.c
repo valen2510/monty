@@ -84,20 +84,18 @@ void rotl(stack_t **stack, unsigned int line_number)
  */
 void rotr(stack_t **stack, unsigned int line_number)
 {
-	stack_t *current_node, *next_node;
+	stack_t *tail;
 	(void)line_number;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 		return;
 
-	current_node = NULL;
-	while (*stack)
-	{
-		next_node = (*stack)->next;
-		(*stack)->prev = next_node;
-		(*stack)->next = current_node;
-		current_node = *stack;
-		*stack = next_node;
-	}
-	*stack = current_node;
+	tail = *stack;
+	while (tail->next)
+		tail = tail->next;
+	tail->prev->next = tail->next;
+	tail->next = *stack;
+	tail->prev = (*stack)->prev;
+	(*stack)->prev = tail;
+	*stack = tail;
 }
