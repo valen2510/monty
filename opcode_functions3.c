@@ -31,6 +31,6 @@ void pchar(stack_t **stack, unsigned int line_number)
 	if ((*stack)->n < 0  && (*stack)->n > 128)
 		exit(error_msg(9));
 
-	printf("%c\n", (*stack)->n + '0');
+	printf("%c\n", (*stack)->n);
 
 }
