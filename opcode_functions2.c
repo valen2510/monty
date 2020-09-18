@@ -69,11 +69,16 @@ void _div(stack_t **stack, unsigned int line_number)
  */
 void mul(stack_t **stack, unsigned int line_number)
 {
+	stack_t *current_node;
+
 	(void)line_number;
 	if (!(*stack) || !(*stack)->next)
 		exit(error_msg(7));
 
+	current_node = *stack;
 	(*stack)->next->n *= (*stack)->n;
-	pop(stack, line_number);
+	(*stack)->next->prev = NULL;
+	*stack = (*stack)->next;
+	free(current_node);
 
 }
