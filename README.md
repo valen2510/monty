@@ -83,7 +83,7 @@ $ ./monty bytecode_file
 <h3> 🤝 Contributors</h3>
 
 <a href="https://github.com/valen2510" target="_blank">
-        <img src="https://avatars3.githubusercontent.com/u/65981858?s=460&u=917bf8544c11bfc83b5a9fd961fc72ef25e3188a&v=4" style="float: center; margin-right: 10px" height="50" width="50">
+        <img src="https://www8.lunapic.com/do-not-link-here-use-hosting-instead/160046708678543521?9436489550" style="float: center; margin-right: 10px" height="50" width="50">
 </a>
 
 ---
