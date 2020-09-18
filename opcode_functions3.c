@@ -31,6 +31,46 @@ void pchar(stack_t **stack, unsigned int line_number)
 	if ((*stack)->n < 0  || (*stack)->n > 128)
 		exit(error_msg(9));
 
-	printf("%c\n", (*stack)->n);
+	printf("%c\n", (char)(*stack)->n);
+}
+/**
+ ** rotl - change head of the stack at the end
+ * @stack: head of the stack
+ * @line_number: number of current line
+ */
+void rotl(stack_t **stack, unsigned int line_number)
+{
+	stack_t *aux_head, *tail = *stack;
 
+	global->ln = line_number;
+	while (tail->next)
+		tail = tail->next;
+	aux_head = (*stack)->next;
+	(*stack)->next = tail->next;
+	(*stack)->prev = tail;
+	tail->next = *stack;
+	aux_head->prev = NULL;
+	*stack = aux_head;
+}
+/**
+ ** rotr - reverse the elements in a stack
+ * @stack: head of the stack
+ * @line_number: number of current line
+ */
+void rotr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *current_node, *next_node;
+
+	global->ln = line_number;
+
+	current_node = NULL;
+	while (*stack)
+	{
+		next_node = (*stack)->next;
+		(*stack)->prev = next_node;
+		(*stack)->next = current_node;
+		current_node = *stack;
+		*stack = next_node;
+	}
+	*stack = current_node;
 }

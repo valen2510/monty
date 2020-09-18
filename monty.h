@@ -71,6 +71,8 @@ void _div(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
 void pchar(stack_t **stack, unsigned int line_number);
+void rotl(stack_t **stack, unsigned int line_number);
+void rotr(stack_t **stack, unsigned int line_number);
 
 void initialize(global_t *global, char **argv);
 void (*op_func(void))(stack_t **stack, unsigned int line_number);
