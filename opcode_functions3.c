@@ -48,9 +48,10 @@ void pstr(stack_t **stack, unsigned int line_number)
 		if (current_node->n == 0)
 			break;
 
-		if (current_node->n > 0 && current_node->n < 127)
-			putchar(current_node->n);
+		if (current_node->n < 0 || current_node->n > 127)
+			break;
 
+		putchar(current_node->n);
 		current_node = current_node->next;
 	}
 	putchar('\n');
