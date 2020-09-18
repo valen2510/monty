@@ -34,6 +34,28 @@ void pchar(stack_t **stack, unsigned int line_number)
 	printf("%c\n", (char)(*stack)->n);
 }
 /**
+ ** pstr - print the string started at the top of the stack
+ * @stack: head of the stack
+ * @line_number: number of current line
+ */
+void pstr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *current_node = *stack;
+	(void)line_number;
+
+	while (current_node)
+	{
+		if (current_node->n == 0)
+			break;
+
+		if (current_node->n > 0 && current_node->n < 127)
+			putchar(current_node->n);
+
+		current_node = current_node->next;
+	}
+	putchar('\n');
+}
+/**
  ** rotl - change head of the stack at the end
  * @stack: head of the stack
  * @line_number: number of current line
