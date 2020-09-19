@@ -85,6 +85,7 @@ $ ./monty bytecode_file
 <h3> ✍ Example</h3>
 
 <p> Monty byte code file:
+
 ```
 monty]\--> cat -e bytecodes/00.m
 push 1$
@@ -94,6 +95,7 @@ pall$
 
 ```
 Output:
+
 ```
 monty]\--> ./monty bytecodes/00.m
 3
