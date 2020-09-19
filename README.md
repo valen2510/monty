@@ -79,11 +79,35 @@ $ ./monty bytecode_file
 |pstr   | Prints the integers stored in the stack as their ascii value representation. It stops printing when the value is 0, when the stack is over and when the value of the element is a non-ascii value.|
 |rotl   | Rotates the top of the stack to the bottom of the stack.|
 |rotr   | Rotates the bottom of the stack to the top of the stack.|
+|queue  | Sets the format of the data into a queue.|
+|stack  | Sets the format of the data into a stack.|
+
+<h3> ✍ Example</h3>
+
+<p> Monty byte code file:
+```
+monty]\--> cat -e bytecodes/00.m
+push 1$
+push 2$
+push 3$
+pall$
+
+```
+Output:
+```
+monty]\--> ./monty bytecodes/00.m
+3
+2
+1
+monty]\-->
+
+```
+</p>
 
 <h3> 🤝 Contributors</h3>
 
 <a href="https://github.com/valen2510" target="_blank">
-        <img src="https://www8.lunapic.com/do-not-link-here-use-hosting-instead/160046708678543521?9436489550" style="float: center; margin-right: 10px" height="50" width="50">
+        <img src="https://www8.lunapic.com/do-not-link-here-use-hosting-instead/160046708678543521?9436489550" style="float: center; margin-right: 10px" height="65" width="65">
 </a>
 
 ---
@@ -100,7 +124,7 @@ $ ./monty bytecode_file
         </a>
 <br>
 <p align="center">
-<b>Holberton School - Colombia<b><br>
+<b>Medellin - Colombia<b><br>
 </p>
 <p align="center">
 <b>September, 2020.<b>
