@@ -11,6 +11,9 @@ void push(stack_t **stack, unsigned int line_number)
 	global->ln = line_number;
 	global->stack = *stack;
 
+	if (global->arr[1] == NULL)
+		exit(error_msg(4));
+
 	if (global->arr[1][0] == '-' && (isdigit(global->arr[1][i + 1]) == 0))
 		exit(error_msg(4));
 
