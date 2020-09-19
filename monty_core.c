@@ -23,18 +23,17 @@ void (*op_func(void))(stack_t **stack, unsigned int line_number)
 		{"pstr", pstr},
 		{"rotl", rotl},
 		{"rotr", rotr},
+		{"queue", queue},
+		{"stack", stack},
 		{NULL, NULL}
 	};
 
 	for (i = 0; op_func[i].opcode != NULL; i++)
 	{
-		if (global->arr[0] != NULL)
+		if ((strcmp(global->arr[0], op_func[i].opcode)) == 0)
 		{
-			if ((strcmp(global->arr[0], op_func[i].opcode)) == 0)
-			{
-				global->op = op_func[i].opcode;
-				return (op_func[i].f);
-			}
+			global->op = op_func[i].opcode;
+			return (op_func[i].f);
 		}
 	}
 	exit(error_msg(3));
@@ -59,3 +58,4 @@ char **splitline(char *line)
 	global->arr[position] = NULL;
 	return (global->arr);
 }
+

@@ -6,42 +6,25 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new_element = NULL;
 	int i = 0;
 
 	global->ln = line_number;
 	global->stack = *stack;
 
-	if (global->arr[1] == NULL)
-		exit(error_msg(4));
 	if (global->arr[1][0] == '-' && (isdigit(global->arr[1][i + 1]) == 0))
 		exit(error_msg(4));
+
 	for (; global->arr[1][i] != '\0'; i++)
 	{
-		if (global->arr[1][i + 1] && (isdigit(global->arr[1][i + 1]) == 0))
+		if (isdigit(global->arr[1][i]) == 0)
 			exit(error_msg(4));
 	}
 
-
-	new_element = malloc(sizeof(stack_t));
-	if (new_element == NULL)
-		exit(error_msg(2));
-
-	new_element->n = atoi(global->arr[1]);
-
-	if (!(*stack))
-	{
-		new_element->prev = NULL;
-		new_element->next = NULL;
-		*stack = new_element;
-	}
+	if (global->status == 0)
+		add_node_stack();
 	else
-	{
-		new_element->next = *stack;
-		new_element->prev = (*stack)->prev;
-		(*stack)->prev = new_element;
-		*stack = new_element;
-	}
+		add_node_queue();
+
 }
 /**
  * pall - print the elements in a stack

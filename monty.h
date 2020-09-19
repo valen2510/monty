@@ -51,6 +51,7 @@ typedef struct var_global
 {
 	char **arr;
 	char **argv;
+	int status;
 	unsigned int ln;
 	char *op;
 	char *command;
@@ -74,6 +75,8 @@ void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
+void queue(stack_t **stack, unsigned int line_number);
+void stack(stack_t **stack, unsigned int line_number);
 
 void initialize(global_t *global, char **argv);
 void (*op_func(void))(stack_t **stack, unsigned int line_number);
@@ -82,4 +85,6 @@ int _atoi(char *s);
 int error_msg(int error);
 void free_all(void);
 void free_stack(stack_t *stack);
+stack_t *add_node_stack(void);
+stack_t *add_node_queue(void);
 #endif
