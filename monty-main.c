@@ -24,12 +24,15 @@ int main(int argc, char **argv)
 	global->arr = malloc(sizeof(char *) * 100);
 	if (!global->arr)
 		return (error_msg(2));
+
 	while (getline(&global->command, &line_size, global->fp) != -1)
 	{
 		global->ln++;
 		splitline(global->command);
+
 		if (global->arr[0] == NULL || global->arr[0][0] == '#')
 			continue;
+
 		op_func()(&global->stack, global->ln);
 		free(global->command);
 		global->command = NULL;

@@ -93,6 +93,7 @@ void rotr(stack_t **stack, unsigned int line_number)
 	tail = *stack;
 	while (tail->next)
 		tail = tail->next;
+
 	tail->prev->next = tail->next;
 	tail->next = *stack;
 	tail->prev = (*stack)->prev;
